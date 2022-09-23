@@ -1,0 +1,29 @@
+<div class="background" fxLayoutAlign="center center">
+    <div class="log-in-box" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <h3 style="font-weight: 350; font-size: 4.5vh; transform: translateY(1.5vh);">Inicia sesión</h3>
+        <form [formGroup]="logInForm" fxLayoutAlign="center center" fxLayout="column">
+            <mat-form-field   class="form-field" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input autofocus [formControl]="$any(logInForm.get('email'))" type="email" matInput  placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="$any(logInForm.get('email')).hasError('email') && !$any(logInForm.get('email')).hasError('required')">
+                  Por favor ingrese un e-mail válido
+                </mat-error>
+                <mat-error *ngIf="$any(logInForm.get('email')).hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field  class="form-field" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input [formControl]="$any(logInForm.get('password'))" type="password" matInput  placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="$any(logInForm.get('password')).value.length < 7">
+                  La contraseña debe ser mayor a 7 caracteres
+                </mat-error>
+              </mat-form-field>
+        </form>
+     <div fxLayoutAlign="center center" fxLayout="column" style="transform: translateY(-1.5vh)">
+      <button mat-raised-button color="primary" style="width:18vh;margin-bottom: 3vh;" [disabled]="$any(logInForm.get('email')).value == '' || $any(logInForm.get('password')).value.length < 7 || $any(logInForm.get('email')).hasError('email')" (click)="sendLogInForm()">Ingresar</button  >
+      <button routerLink="/recover" mat-raised-button color="warn">Olvide la contraseña</button>
+     </div>
+    </div>
+   
+</div>

@@ -1,0 +1,20 @@
+<div class="background-recover" fxLayoutAlign="center center">
+    <div class="log-in-box" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <h3 style="font-weight: 350; font-size: 4.5vh; transform: translateY(1.5vh);">Ingresa tu mail</h3>    
+            <mat-form-field   class="form-field" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input [formControl]="emailForm" autofocus type="email" matInput  placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="emailForm.hasError('email') && !emailForm.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailForm.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+     <div fxLayoutAlign="center center" fxLayout="column" style="transform: translateY(-1.5vh)">
+      <button mat-raised-button color="primary" style="margin-bottom: 3.5vh;" [disabled]="emailForm.value == '' || emailForm.hasError('email')" (click)="sendLogInForm()">Reestablecer contraseña</button  >
+      <button routerLink="/" mat-raised-button color="warn"  style="width: 17vh;">Volver</button>
+     </div>
+    </div>
+   
+</div>
